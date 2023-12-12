@@ -1,0 +1,35 @@
+{
+    "name": "douyuxingchen/scrm-wecom-api",
+    "description": "这是一个封装了企业微信API的SDK！",
+    "type": "library",
+    "license": "GPL-3.0-only",
+    "autoload": {
+        "psr-4": {
+            "Douyuxingchen\\ScrmWecomApi\\": "src/"
+        },
+        "files": [
+            "src/Support/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "fenghaining",
+            "email": "fenghaining@douyuxingchen.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2.5|^8.0",
+        "ext-json": "*",
+        "laravel/framework": "^6.0",
+        "guzzlehttp/guzzle": "^6.0"
+
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    }
+}

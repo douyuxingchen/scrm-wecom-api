@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit cacheResultFile="false"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <!--测试套件：非常多的测试用例放在一起即可成为测试套件，执行时会扫描包含的所有 *Test.php文件-->
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <!--这里配置了白名单，只有这里边的代码会被统计覆盖率-->
+<!--        <whitelist processUncoveredFilesFromWhitelist="true">-->
+<!--            <directory suffix=".php">./src</directory>-->
+<!--        </whitelist>-->
+    </filter>
+    <!--这里配置了PHP的环境变量-->
+    <php>
+        <server name="APP_ENV" value="dev"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+        <server name="MAIL_DRIVER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
+    </php>
+    <!--这里是日志记录，把覆盖率信息保存到 ./tests/codeCoverage-->
+<!--    <logging>-->
+<!--        <log type="coverage-html" target="./tests/codeCoverage"/>-->
+<!--    </logging>-->
+
+    <!-- 添加以下节点，用于配置不生成测试报告 -->
+    <listeners>
+        <listener class="PHPUnit\TextUI\ResultPrinter" file="" />
+    </listeners>
+</phpunit>
