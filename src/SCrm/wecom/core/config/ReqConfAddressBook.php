@@ -6,12 +6,12 @@ class ReqConfAddressBook implements ReqConfInterface
 {
     public function getCorpId(): string
     {
-        return config('qy_weixin.passport.corpid');
+        return lib_env('CORPID') ?? config('qy_weixin.passport.corpid');
     }
 
     public function getCorpSecret(): string
     {
-        return config('qy_weixin.passport.address_book_secret');
+        return lib_env('CORPSECRET_ADDRESS_BOOK') ?? config('qy_weixin.passport.address_book_secret');
     }
 
     public function getCacheKey(): string

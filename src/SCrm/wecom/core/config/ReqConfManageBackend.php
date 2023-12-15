@@ -6,12 +6,12 @@ class ReqConfManageBackend implements ReqConfInterface
 {
     public function getCorpId()
     {
-        return config('qy_weixin.passport.corpid');
+        return lib_env('CORPID') ?? config('qy_weixin.passport.corpid');
     }
 
     public function getCorpSecret()
     {
-        return config('qy_weixin.passport.manage_backend_secret');
+        return lib_env('CORPSECRET_MANAGE_BACKEND') ?? config('qy_weixin.passport.manage_backend_secret');
     }
 
     public function getCacheKey(): string

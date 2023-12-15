@@ -2,7 +2,8 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core;
 
-use Douyuxingchen\ScrmWecomApi\Redis\RedisClient;
+use Exception;
+use Douyuxingchen\ScrmWecomApi\Redis\RedisOp;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\RequestInterface;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\token\CreateTokenRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\token\param\CreateTokenParam;
@@ -11,9 +12,12 @@ class AccessTokenBuilder
 {
     public $redisClient;
 
+    /**
+     * @throws Exception
+     */
     public function __construct()
     {
-        $this->redisClient = (new RedisClient())->getClient();
+        $this->redisClient = RedisOp::getInstance();
     }
 
     public function generate(RequestInterface $request): string
@@ -42,14 +46,14 @@ class AccessTokenBuilder
 
     private function setTokenStore($tokenKey, AccessToken $tokenObj)
     {
-        $this->redisClient->set($tokenKey, $tokenObj->getAccessToken());
-
-        $this->redisClient->expireat($tokenKey, time() + $tokenObj->getExpireIn() - 200);
+        $tokenValue = $tokenObj->getAccessToken();
+        $expireTime = time() + $tokenObj->getExpireIn() - 200;
+        $this->redisClient->setString($tokenKey, $tokenValue, $expireTime);
     }
 
     private function getTokenStore($cacheKey)
     {
-        return $this->redisClient->get($cacheKey);
+        return $this->redisClient->getString($cacheKey);
     }
 
     public function build($param): AccessToken

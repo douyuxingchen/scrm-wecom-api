@@ -6,12 +6,12 @@ class ReqConfVice implements ReqConfInterface
 {
     public function getCorpId(): string
     {
-        return config('qy_weixin.passport.corpid');
+        return lib_env('CORPID') ?? config('qy_weixin.passport.corpid');
     }
 
     public function getCorpSecret(): string
     {
-        return config('qy_weixin.passport.agent_secret');
+        return lib_env('CORPSECRET_AGENT') ?? config('qy_weixin.passport.agent_secret');
     }
 
     public function getCacheKey(): string
