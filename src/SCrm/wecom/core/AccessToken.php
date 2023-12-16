@@ -4,8 +4,6 @@ namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core;
 
 class AccessToken
 {
-    const ACCESS_TOKEN_KEY = 'qy_weixin::access_token::hash';
-
     private $errCode;
     private $message;
     private $accessToken;

@@ -6,6 +6,21 @@ use Exception;
 use Illuminate\Redis\Connections\Connection;
 use Illuminate\Redis\RedisManager;
 
+/**
+ * Class RedisOp
+ * Description: Redis
+ * @uses \Redis
+ * @method sMembers($key)
+ * @method hGetAll($key)
+ * @method sAdd($key, ...$value)
+ * @method hSet($key, $hashKey, $value)
+ * @method sRem($key, ...$member1)
+ * @method hDel($key, $hashKey1, ...$otherHashKeys)
+ * @method hmset($key, ...$dictionary)
+ * @method hmget($key, ...$dictionary)
+ * @method hget($key, $hashKey1)
+ * Date: 2020/11/5 1:52 下午
+ */
 class RedisOp
 {
     private $config;
@@ -16,7 +31,7 @@ class RedisOp
      * @param $config
      * @throws Exception
      */
-    public function __construct($config)
+    private function __construct($config)
     {
         // 初始化redis配置
         $host     = $config['host'] ?? lib_env('REDIS_HOST');
@@ -48,10 +63,6 @@ class RedisOp
         return self::$defaultInstance;
     }
 
-    private function __clone()
-    {
-    }
-
     /**
      * @desc 返回redis连接对象
      * User: fenghaining@douyuxingchen.com
@@ -66,10 +77,10 @@ class RedisOp
 
     /**
      * @desc 获取字符串类型缓存
-     * @param string $key
+     * @param $key
      * @return mixed
      */
-    public function getString(string $key)
+    public function getString($key)
     {
         return $this->getClient()->get($key);
     }
@@ -167,6 +178,10 @@ class RedisOp
     public function expire($key, int $expireTime)
     {
         return $this->getClient()->expire($key, $expireTime);
+    }
+
+    private function __clone()
+    {
     }
 
     public function __call($name, $arguments)
