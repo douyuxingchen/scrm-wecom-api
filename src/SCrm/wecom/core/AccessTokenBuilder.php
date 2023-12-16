@@ -47,7 +47,7 @@ class AccessTokenBuilder
     private function setTokenStore($tokenKey, AccessToken $tokenObj)
     {
         $tokenValue = $tokenObj->getAccessToken();
-        $expireTime = time() + $tokenObj->getExpireIn() - 200;
+        $expireTime = $tokenObj->getExpireIn() - 200;
         $this->redisClient->setString($tokenKey, $tokenValue, $expireTime);
     }
 

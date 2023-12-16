@@ -30,5 +30,6 @@ class GlobalConfig extends WeComOpConfig
     {
         $this->corp_id     = $reqConf->getCorpId();
         $this->cache_key   = $reqConf->getCacheKey();
-        $this->corp_secret = $reqConf->getCorpSecret();    }
+        $this->corp_secret = $reqConf->getCorpSecret();
+    }
 }

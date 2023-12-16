@@ -8,9 +8,9 @@ interface RequestInterface
 
     public function getParam();
 
-//    public function getMethod(): string;
-//
-//    public function getUrlPath(): string;
+    public function getMethod(): string;
+
+    public function getUrlPath(): string;
 
     public function execute();
 }

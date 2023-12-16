@@ -19,11 +19,12 @@ class FirstTest extends TestCase
     public function testGetTagList()
     {
 
-        $param         = new CorpTagGetListParam();
-        $param->tag_id = 'etr2IaCgAAStCgcpA_fM1Lg-Nsw5zN2A';
-
+        $param   = new CorpTagGetListParam();
         $request = new CorpTagGetListRequest();
         $request->setParam($param);
+
+        $param->tag_id = 'etr2IaCgAAStCgcpA_fM1Lg-Nsw5zN2A';
+
         $res = $request->execute();
         dd($res);
     }
