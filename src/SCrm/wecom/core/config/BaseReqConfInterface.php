@@ -2,7 +2,7 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config;
 
-interface ReqConfInterface
+interface BaseReqConfInterface
 {
     public function getCorpId();
 

@@ -3,7 +3,7 @@
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\token;
 
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\RequestInterface;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfInterface;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\BaseReqConfInterface;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfMain;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\WeComClient;
@@ -34,7 +34,7 @@ class CreateTokenRequest implements RequestInterface
     public function setConfig($config = null)
     {
         // 默认配置
-        if (!$config instanceof ReqConfInterface) {
+        if (!$config instanceof BaseReqConfInterface) {
             $config = new ReqConfMain();
         }
 

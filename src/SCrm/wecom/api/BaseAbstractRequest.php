@@ -2,7 +2,6 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api;
 
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfInterface;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfMain;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\WeComClient;

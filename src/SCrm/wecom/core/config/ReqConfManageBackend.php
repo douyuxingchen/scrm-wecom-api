@@ -2,16 +2,16 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config;
 
-class ReqConfManageBackend implements ReqConfInterface
+class ReqConfManageBackend implements BaseReqConfInterface
 {
     public function getCorpId()
     {
-        return lib_env('CORPID') ?? config('qy_weixin.passport.corpid');
+        return config('qy_weixin.passport.corpid');
     }
 
     public function getCorpSecret()
     {
-        return lib_env('CORPSECRET_MANAGE_BACKEND') ?? config('qy_weixin.passport.manage_backend_secret');
+        return config('qy_weixin.passport.manage_backend_secret');
     }
 
     public function getCacheKey(): string

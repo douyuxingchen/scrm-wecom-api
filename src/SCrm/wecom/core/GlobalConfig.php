@@ -3,7 +3,7 @@
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core;
 
 
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfInterface;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\BaseReqConfInterface;
 
 class GlobalConfig extends WeComOpConfig
 {
@@ -26,7 +26,7 @@ class GlobalConfig extends WeComOpConfig
     {
     }
 
-    public function setCorpConf(ReqConfInterface $reqConf)
+    public function setCorpConf(BaseReqConfInterface $reqConf)
     {
         $this->corp_id     = $reqConf->getCorpId();
         $this->cache_key   = $reqConf->getCacheKey();
