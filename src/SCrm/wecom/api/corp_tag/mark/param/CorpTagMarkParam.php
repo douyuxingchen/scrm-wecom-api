@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Library\SCRM\wecom\api\corp_tag\mark\param;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\mark\param;
 
 class CorpTagMarkParam
 {

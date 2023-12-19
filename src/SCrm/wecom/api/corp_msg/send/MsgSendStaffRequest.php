@@ -1,11 +1,10 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\mark;
-
+namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_msg\send;
 
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestAbstract;
 
-class CorpTagMarkRequest extends BaseRequestAbstract
+class MsgSendStaffRequest extends BaseRequestAbstract
 {
     public function getMethod(): string
     {
@@ -14,6 +13,6 @@ class CorpTagMarkRequest extends BaseRequestAbstract
 
     public function getUrlPath(): string
     {
-        return "/cgi-bin/externalcontact/mark_tag";
+        return "/cgi-bin/message/send";
     }
 }
