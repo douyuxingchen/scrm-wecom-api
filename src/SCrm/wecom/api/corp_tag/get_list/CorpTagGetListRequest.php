@@ -3,9 +3,9 @@
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\get_list;
 
 
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseAbstractRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestAbstract;
 
-class CorpTagGetListRequest extends BaseAbstractRequest
+class CorpTagGetListRequest extends BaseRequestAbstract
 {
 
     public function getMethod(): string

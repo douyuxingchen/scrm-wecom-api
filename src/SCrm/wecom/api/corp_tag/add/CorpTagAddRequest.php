@@ -3,9 +3,9 @@
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\add\param;
 
 
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseAbstractRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestAbstract;
 
-class CorpTagAddRequest extends BaseAbstractRequest
+class CorpTagAddRequest extends BaseRequestAbstract
 {
     public function getMethod(): string
     {

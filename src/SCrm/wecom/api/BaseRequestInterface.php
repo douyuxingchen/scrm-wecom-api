@@ -2,7 +2,7 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api;
 
-interface RequestInterface
+interface BaseRequestInterface
 {
     public function setParam($param);
 

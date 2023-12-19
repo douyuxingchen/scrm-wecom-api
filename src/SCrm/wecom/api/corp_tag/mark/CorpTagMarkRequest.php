@@ -3,9 +3,9 @@
 namespace App\Library\SCRM\wecom\api\corp_tag\mark;
 
 
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseAbstractRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestAbstract;
 
-class CorpTagMarkRequest extends BaseAbstractRequest
+class CorpTagMarkRequest extends BaseRequestAbstract
 {
     public function getMethod(): string
     {

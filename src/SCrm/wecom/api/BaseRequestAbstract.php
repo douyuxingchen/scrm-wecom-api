@@ -6,13 +6,13 @@ use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfMain;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\WeComClient;
 
-abstract class BaseAbstractRequest implements RequestInterface
+abstract class BaseRequestAbstract implements BaseRequestInterface
 {
-    // 处理成功的code
     const SUC_CODE = 0;
-    private $param;
 
-    private $config;
+    protected $param;
+
+    protected $config;
 
     public function __construct()
     {

@@ -3,9 +3,9 @@
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_acquisition\create;
 
 
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseAbstractRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestAbstract;
 
-class CustomerAcquisitionCreateRequest extends BaseAbstractRequest
+class CustomerAcquisitionCreateRequest extends BaseRequestAbstract
 {
     public function getMethod(): string
     {
