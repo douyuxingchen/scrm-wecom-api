@@ -6,10 +6,12 @@ class ReqConfCustomize extends ReqConfAbstract
 {
     private $corpId;
     private $corpSecret;
+    private $cacheKey;
 
-    public function __construct($corpId, $corpSecret)
+    public function __construct($corpId, $corpSecret, $cacheKey)
     {
         $this->corpId     = $corpId;
+        $this->cacheKey   = $cacheKey;
         $this->corpSecret = $corpSecret;
     }
 
@@ -25,6 +27,6 @@ class ReqConfCustomize extends ReqConfAbstract
 
     public function getCacheKey(): string
     {
-        return 'we_com_access_token_customize';
+        return $this->cacheKey;
     }
 }

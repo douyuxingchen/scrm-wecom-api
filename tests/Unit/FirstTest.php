@@ -2,6 +2,8 @@
 
 namespace Unit;
 
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_staff\get_detail\CorpStaffGetDetailRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_staff\get_detail\param\CorpStaffGetDetailParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\get_list\CorpTagGetListRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\get_list\param\CorpTagGetListParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfCustomize;
@@ -24,8 +26,9 @@ class FirstTest extends TestCase
 
         $corpId     = lib_env('CORPID');
         $corpSecret = lib_env('CORPSECRET');
+        $cacheKey   = $this->getCustomizeCacheKey($corpSecret);
 
-        $config  = new ReqConfCustomize($corpId, $corpSecret);
+        $config  = new ReqConfCustomize($corpId, $corpSecret, $cacheKey);
         $param   = new CorpTagGetListParam();
         $request = new CorpTagGetListRequest();
         $request->setParam($param);
@@ -34,5 +37,29 @@ class FirstTest extends TestCase
 
         $res = $request->execute();
         dd($res);
+    }
+
+    public function testGetStaffDetail()
+    {
+        GlobalConfig::getInstance()->setDebug();
+
+        $corpId     = lib_env('CORPID');
+        $corpSecret = lib_env('CORPSECRET_MANAGE_BACKEND');
+        $cacheKey   = $this->getCustomizeCacheKey($corpSecret);
+
+        $config  = new ReqConfCustomize($corpId, $corpSecret, $cacheKey);
+        $param   = new CorpStaffGetDetailParam();
+        $request = new CorpStaffGetDetailRequest();
+        $request->setParam($param);
+        $request->setConfig($config);
+        $param->userid = 'FengHaiNing';
+
+        $res = $request->execute();
+        dd($res);
+    }
+
+    private function getCustomizeCacheKey($corpSecret): string
+    {
+        return 'we_com_access_token_customize_' . md5($corpSecret);
     }
 }
