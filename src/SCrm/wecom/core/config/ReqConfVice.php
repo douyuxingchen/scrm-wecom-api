@@ -2,7 +2,7 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config;
 
-class ReqConfVice implements BaseReqConfInterface
+class ReqConfVice extends ReqConfAbstract
 {
     public function getCorpId(): string
     {

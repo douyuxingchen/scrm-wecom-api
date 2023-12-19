@@ -5,6 +5,7 @@ namespace Unit;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\get_list\CorpTagGetListRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\get_list\param\CorpTagGetListParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfCustomize;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
 use PHPUnit\Framework\TestCase;
 
 class FirstTest extends TestCase
@@ -19,6 +20,8 @@ class FirstTest extends TestCase
 
     public function testGetTagList()
     {
+        GlobalConfig::getInstance()->setDebug();
+
         $corpId     = lib_env('CORPID');
         $corpSecret = lib_env('CORPSECRET');
 

@@ -2,17 +2,19 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config;
 
-class ReqConfMain implements BaseReqConfInterface
+use Exception;
+
+class ReqConfMain extends ReqConfAbstract
 {
 
     public function getCorpId()
     {
-        return class_exists('config') ? config('qy_weixin.passport.corpid') : '';
+        return config('qy_weixin.passport.corpid');
     }
 
     public function getCorpSecret()
     {
-        return class_exists('config') ? config('qy_weixin.passport.corpsecret') : '';
+        return config('qy_weixin.passport.corpsecret');
     }
 
     public function getCacheKey(): string

@@ -16,7 +16,9 @@ abstract class BaseAbstractRequest implements RequestInterface
 
     public function __construct()
     {
-        $this->setConfig(new ReqConfMain);
+        if (!GlobalConfig::getInstance()->is_debug) {
+            $this->setConfig(new ReqConfMain);
+        }
     }
 
     public function setParam($param)
@@ -31,9 +33,9 @@ abstract class BaseAbstractRequest implements RequestInterface
 
     public function setConfig($config)
     {
-        GlobalConfig::getGlobalConfig()->setCorpConf($config);
+        GlobalConfig::getInstance()->setCorpConf($config);
 
-        $this->config = GlobalConfig::getGlobalConfig();
+        $this->config = GlobalConfig::getInstance();
     }
 
     public function getConfig()

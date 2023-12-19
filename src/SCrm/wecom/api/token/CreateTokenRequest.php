@@ -2,52 +2,10 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\token;
 
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\RequestInterface;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\BaseReqConfInterface;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfMain;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\WeComClient;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseAbstractRequest;
 
-class CreateTokenRequest implements RequestInterface
+class CreateTokenRequest extends BaseAbstractRequest
 {
-
-    //通用变量
-    private $param;
-
-    private $config;
-
-    public function __construct()
-    {
-        $this->setConfig();
-    }
-
-    public function setParam($param)
-    {
-        $this->param = $param;
-    }
-
-    public function getParam()
-    {
-        return $this->param;
-    }
-
-    public function setConfig($config = null)
-    {
-        // 默认配置
-        if (!$config instanceof BaseReqConfInterface) {
-            $config = new ReqConfMain();
-        }
-
-        GlobalConfig::getGlobalConfig()->setCorpConf($config);
-
-        $this->config = GlobalConfig::getGlobalConfig();
-    }
-
-    public function getConfig()
-    {
-        return $this->config;
-    }
-
     public function getMethod(): string
     {
         return 'POST';
@@ -57,10 +15,5 @@ class CreateTokenRequest implements RequestInterface
     public function getUrlPath(): string
     {
         return "/cgi-bin/gettoken";
-    }
-
-    public function execute()
-    {
-        return WeComClient::getInstance()->request($this);
     }
 }

@@ -3,7 +3,7 @@
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core;
 
 use Exception;
-use Douyuxingchen\ScrmWecomApi\Redis\RedisOp;
+use Douyuxingchen\ScrmWecomApi\Redis\RedisLabor;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\RequestInterface;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\token\CreateTokenRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\token\param\CreateTokenParam;
@@ -17,7 +17,7 @@ class AccessTokenBuilder
      */
     public function __construct()
     {
-        $this->redisClient = RedisOp::getInstance();
+        $this->redisClient = RedisLabor::getInstance();
     }
 
     public function generate(RequestInterface $request): string
@@ -26,16 +26,20 @@ class AccessTokenBuilder
             return '';
         }
 
-        $param             = new CreateTokenParam();
-        $config            = $request->getConfig();
-        $cacheKey          = $config->cache_key;
-        $param->corpid     = $config->corp_id;
-        $param->corpsecret = $config->corp_secret;
+        $config     = $request->getConfig();
+        $corpId     = $config->corp_id;
+        $cacheKey   = $config->cache_key;
+        $corpSecret = $config->corp_secret;
 
         $accessToken = $this->getTokenStore($cacheKey);
         if ($accessToken) {
             return $accessToken;
         }
+
+        $param = new CreateTokenParam();
+
+        $param->corpid     = $corpId;
+        $param->corpsecret = $corpSecret;
 
         $tokenObj = $this->build($param);
 

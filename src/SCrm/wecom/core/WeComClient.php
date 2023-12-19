@@ -47,11 +47,7 @@ class WeComClient
             $httpRequest->body = SignUtil::marshal($params);
         }
 
-        // RequestLog::info('请求企业微信接口(request):', get_object_vars($httpRequest));
-
         $httpResponse = $this->httpClient->$method($httpRequest);
-
-        // RequestLog::info('请求企业微信接口(response):', get_object_vars($httpResponse));
 
         return json_decode($httpResponse->body, false, 512, JSON_UNESCAPED_UNICODE);
     }

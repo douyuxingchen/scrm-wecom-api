@@ -2,12 +2,13 @@
 
 namespace Douyuxingchen\ScrmWecomApi\Redis;
 
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
 use Exception;
 use Illuminate\Redis\Connections\Connection;
 use Illuminate\Redis\RedisManager;
 
 /**
- * Class RedisOp
+ * Class RedisLabor
  * Description: Redis
  * @uses \Redis
  * @method sMembers($key)
@@ -21,7 +22,7 @@ use Illuminate\Redis\RedisManager;
  * @method hget($key, $hashKey1)
  * Date: 2020/11/5 1:52 下午
  */
-class RedisOp
+class RedisLabor
 {
     private $config;
 
@@ -34,28 +35,26 @@ class RedisOp
     private function __construct($config)
     {
         // 初始化redis配置
-        $host     = $config['host'] ?? lib_env('REDIS_HOST');
-        $port     = $config['port'] ?? lib_env('REDIS_PORT');
-        $password = $config['password'] ?? lib_env('REDIS_PASSWORD');
-        $database = $config['database'] ?? lib_env('REDIS_DB');
+        $envMethod = GlobalConfig::getInstance()->is_debug ? 'lib_env' : 'env';
+        if (empty($config)) {
+            $config['host']     = $envMethod('REDIS_HOST');
+            $config['port']     = $envMethod('REDIS_PORT');
+            $config['password'] = $envMethod('REDIS_PASSWORD');
+            $config['database'] = $envMethod('REDIS_DB');
+        }
 
         $this->config = [
             'client'  => 'predis',
-            'default' => [
-                'host'     => $host,
-                'port'     => $port,
-                'password' => $password,
-                'database' => $database,
-            ]
+            'default' => $config
         ];
     }
 
     /**
      * @param array $config
-     * @return RedisOp
+     * @return RedisLabor
      * @throws Exception
      */
-    public static function getInstance(array $config = []): RedisOp
+    public static function getInstance(array $config = []): RedisLabor
     {
         if (!(self::$defaultInstance instanceof self)) {
             self::$defaultInstance = new self($config);

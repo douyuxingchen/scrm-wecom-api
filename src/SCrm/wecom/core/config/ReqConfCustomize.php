@@ -2,10 +2,10 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config;
 
-class ReqConfCustomize implements BaseReqConfInterface
+class ReqConfCustomize extends ReqConfAbstract
 {
-    public $corpId;
-    public $corpSecret;
+    private $corpId;
+    private $corpSecret;
 
     public function __construct($corpId, $corpSecret)
     {

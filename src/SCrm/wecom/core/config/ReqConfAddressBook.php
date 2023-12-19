@@ -3,7 +3,7 @@
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config;
 
 
-class ReqConfAddressBook implements BaseReqConfInterface
+class ReqConfAddressBook extends ReqConfAbstract
 {
     public function getCorpId(): string
     {

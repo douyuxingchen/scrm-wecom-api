@@ -3,7 +3,7 @@
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core;
 
 
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\BaseReqConfInterface;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfAbstract;
 
 class GlobalConfig extends WeComOpConfig
 {
@@ -14,7 +14,7 @@ class GlobalConfig extends WeComOpConfig
     {
     }
 
-    public static function getGlobalConfig()
+    public static function getInstance(): GlobalConfig
     {
         if (!(self::$instance instanceof self)) {
             self::$instance = new self();
@@ -26,10 +26,15 @@ class GlobalConfig extends WeComOpConfig
     {
     }
 
-    public function setCorpConf(BaseReqConfInterface $reqConf)
+    public function setCorpConf(ReqConfAbstract $reqConf)
     {
         $this->corp_id     = $reqConf->getCorpId();
         $this->cache_key   = $reqConf->getCacheKey();
         $this->corp_secret = $reqConf->getCorpSecret();
+    }
+
+    public function setDebug()
+    {
+        $this->is_debug = true;
     }
 }
