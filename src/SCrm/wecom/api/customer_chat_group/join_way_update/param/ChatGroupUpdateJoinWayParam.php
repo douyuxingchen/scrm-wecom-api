@@ -2,6 +2,9 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_chat_group\join_way_update\param;
 
+// room_base_name 和 room_base_id 两个参数配合，用于指定自动新建群的群名
+// 例如，假如 room_base_name = "销售客服群", room_base_id = 10
+// 那么，自动创建的第一个群，群名为“销售客服群10”；自动创建的第二个群，群名为“销售客服群11”，依次类推
 class ChatGroupUpdateJoinWayParam
 {
     /*
