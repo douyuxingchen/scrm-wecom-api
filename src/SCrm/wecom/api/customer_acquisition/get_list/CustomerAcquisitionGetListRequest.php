@@ -4,7 +4,7 @@ namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_acquisition\get_lis
 
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestAbstract;
 
-class CustomerAcquisitionCreateRequest extends BaseRequestAbstract
+class CustomerAcquisitionGetListRequest extends BaseRequestAbstract
 {
     public function getMethod(): string
     {

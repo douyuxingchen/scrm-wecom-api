@@ -1,10 +1,10 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_department\get;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_department\get_detail;
 
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestAbstract;
 
-class CorpDepartmentGetRequest extends BaseRequestAbstract
+class CorpDepartmentGetDetailRequest extends BaseRequestAbstract
 {
 
     public function getMethod(): string

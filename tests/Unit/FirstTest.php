@@ -6,6 +6,8 @@ use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_staff\get_detail\CorpStaffGet
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_staff\get_detail\param\CorpStaffGetDetailParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\get_list\CorpTagGetListRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\get_list\param\CorpTagGetListParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_acquisition\get_customer_list\CustomerAcquisitionGetCustomerListRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_acquisition\get_customer_list\param\CustomerAcquisitionGetCustomerListParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfCustomize;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
 use PHPUnit\Framework\TestCase;
@@ -55,6 +57,25 @@ class FirstTest extends TestCase
         $param->userid = 'FengHaiNing';
 
         $res = $request->execute();
+        dd($res);
+    }
+
+    public function testCustomerAcquisition()
+    {
+        GlobalConfig::getInstance()->setDebug();
+
+        $corpId     = lib_env('CORPID');
+        $corpSecret = lib_env('CORPSECRET_AGENT');
+        $cacheKey   = $this->getCustomizeCacheKey($corpSecret);
+
+        $param = new CustomerAcquisitionGetCustomerListParam();
+
+        $config  = new ReqConfCustomize($corpId, $corpSecret, $cacheKey);
+        $request = new CustomerAcquisitionGetCustomerListRequest();
+        $request->setConfig($config);
+        $request->setParam($param);
+        $param->link_id = 'cawcde0f5d477cdf06';
+        $res            = $request->execute();
         dd($res);
     }
 
