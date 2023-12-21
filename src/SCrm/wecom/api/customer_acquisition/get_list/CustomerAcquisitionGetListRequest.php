@@ -13,6 +13,6 @@ class CustomerAcquisitionCreateRequest extends BaseRequestAbstract
 
     public function getUrlPath(): string
     {
-        return "/cgi-bin/externalcontact/customer_acquisition/list_link";
+        return '/cgi-bin/externalcontact/customer_acquisition/list_link';
     }
 }

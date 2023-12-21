@@ -13,6 +13,6 @@ class MsgSendStaffRequest extends BaseRequestAbstract
 
     public function getUrlPath(): string
     {
-        return "/cgi-bin/message/send";
+        return '/cgi-bin/message/send';
     }
 }

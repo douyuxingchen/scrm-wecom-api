@@ -14,6 +14,6 @@ class CorpTagAddRequest extends BaseRequestAbstract
 
     public function getUrlPath(): string
     {
-        return "/cgi-bin/externalcontact/add_corp_tag";
+        return '/cgi-bin/externalcontact/add_corp_tag';
     }
 }

@@ -13,6 +13,6 @@ class CorpStaffGetDetailRequest extends BaseRequestAbstract
 
     public function getUrlPath(): string
     {
-        return "/cgi-bin/user/get";
+        return '/cgi-bin/user/get';
     }
 }

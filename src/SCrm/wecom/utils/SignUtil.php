@@ -33,7 +33,7 @@ class SignUtil
     public static function marshal($param)
     {
         if($param == null) {
-            return "{}";
+            return '{}';
         }
         $arr = self::objToArray($param);
         SignUtil::recKSort($arr); // 对关联数组中的kv，执行排序，需要递归

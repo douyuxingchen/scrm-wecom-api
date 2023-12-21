@@ -13,7 +13,7 @@ class CreateTokenRequest extends BaseRequestAbstract
 
     public function getUrlPath(): string
     {
-        return "/cgi-bin/gettoken";
+        return '/cgi-bin/gettoken';
     }
 
     public function setConfig($config)

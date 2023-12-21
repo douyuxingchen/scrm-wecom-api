@@ -1,11 +1,12 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_department\get_member;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_department\get;
 
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestAbstract;
 
-class CorpDepartmentGetMemberAbstractRequest extends BaseRequestAbstract
+class CorpDepartmentGetRequest extends BaseRequestAbstract
 {
+
     public function getMethod(): string
     {
         return 'GET';
@@ -13,6 +14,6 @@ class CorpDepartmentGetMemberAbstractRequest extends BaseRequestAbstract
 
     public function getUrlPath(): string
     {
-        return '/cgi-bin/user/simplelist';
+        return '/cgi-bin/department/get';
     }
 }

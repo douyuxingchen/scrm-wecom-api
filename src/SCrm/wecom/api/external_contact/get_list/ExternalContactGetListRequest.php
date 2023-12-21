@@ -1,12 +1,11 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_department\get_detail;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\external_contact\remark;
 
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestAbstract;
 
-class CorpDepartmentGetDetailRequest extends BaseRequestAbstract
+class ExternalContactGetListRequest extends BaseRequestAbstract
 {
-
     public function getMethod(): string
     {
         return 'GET';
@@ -14,6 +13,6 @@ class CorpDepartmentGetDetailRequest extends BaseRequestAbstract
 
     public function getUrlPath(): string
     {
-        return "/cgi-bin/department/get";
+        return '/cgi-bin/externalcontact/list';
     }
 }

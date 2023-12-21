@@ -14,6 +14,6 @@ class CorpDepartmentGetListRequest extends BaseRequestAbstract
 
     public function getUrlPath(): string
     {
-        return "/cgi-bin/department/list";
+        return '/cgi-bin/department/list';
     }
 }

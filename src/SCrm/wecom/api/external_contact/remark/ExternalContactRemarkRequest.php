@@ -1,11 +1,10 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\mark;
-
+namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\external_contact\get_list;
 
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestAbstract;
 
-class CorpTagMarkRequest extends BaseRequestAbstract
+class ExternalContactRemarkRequest extends BaseRequestAbstract
 {
     public function getMethod(): string
     {
@@ -14,6 +13,6 @@ class CorpTagMarkRequest extends BaseRequestAbstract
 
     public function getUrlPath(): string
     {
-        return '/cgi-bin/externalcontact/mark_tag';
+        return '/cgi-bin/externalcontact/remark';
     }
 }

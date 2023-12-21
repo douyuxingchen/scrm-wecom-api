@@ -13,6 +13,6 @@ class CorpStaffGetIdListRequest extends BaseRequestAbstract
 
     public function getUrlPath(): string
     {
-        return "/cgi-bin/user/list_id";
+        return '/cgi-bin/user/list_id';
     }
 }

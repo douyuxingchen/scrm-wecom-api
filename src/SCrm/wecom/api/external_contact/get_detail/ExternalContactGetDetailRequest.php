@@ -13,6 +13,6 @@ class ExternalContactGetDetailRequest extends BaseRequestAbstract
 
     public function getUrlPath(): string
     {
-        return "/cgi-bin/externalcontact/get";
+        return '/cgi-bin/externalcontact/get';
     }
 }
