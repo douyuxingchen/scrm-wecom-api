@@ -2,15 +2,15 @@
 
 namespace Unit;
 
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\department\detail\DepartmentDetailRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\department\detail\param\DepartmentDetailParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\staff\detail\param\StaffDetailParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\staff\detail\StaffDetailRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\customer_list\CustomerAcquisitionCustomerListRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\customer_list\param\CustomerAcquisitionCustomerListParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_tag\listing\CustomerCorpTagListRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_tag\listing\param\CustomerCorpTagListParam;
 use Exception;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\department\get_detail\DepartmentDetailRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\department\get_detail\param\DepartmentDetailParam;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\staff\get_detail\StaffDetailRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\staff\get_detail\param\StaffDetailParam;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\externalcontact\customer_acquisition\get_customer_list\CustomerAcquisitionCustomerListRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\externalcontact\customer_acquisition\get_customer_list\param\CustomerAcquisitionCustomerListParam;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\externalcontact\customer_tag\get_list\CustomerCorpTagListRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\externalcontact\customer_tag\get_list\param\CustomerCorpTagListParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfCustomize;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
 use PHPUnit\Framework\TestCase;
