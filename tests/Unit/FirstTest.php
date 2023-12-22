@@ -2,12 +2,14 @@
 
 namespace Unit;
 
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_staff\get_detail\CorpStaffGetDetailRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_staff\get_detail\param\CorpStaffGetDetailParam;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\get_list\CorpTagGetListRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\corp_tag\get_list\param\CorpTagGetListParam;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_acquisition\get_customer_list\CustomerAcquisitionGetCustomerListRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_acquisition\get_customer_list\param\CustomerAcquisitionGetCustomerListParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\department\get_detail\AddressBookDeptGetDetailRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\department\get_detail\param\AddressBookDeptGetDetailParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\staff\get_detail\AddressBookStaffGetDetailRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\staff\get_detail\param\AddressBookStaffGetDetailParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\externalcontact\customer_acquisition\get_customer_list\CustomerAcquisitionGetCustomerListRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\externalcontact\customer_acquisition\get_customer_list\param\CustomerAcquisitionGetCustomerListParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\externalcontact\customer_tag\get_list\CorpTagGetListRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\externalcontact\customer_tag\get_list\param\CorpTagGetListParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfCustomize;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
 use PHPUnit\Framework\TestCase;
@@ -20,6 +22,25 @@ class FirstTest extends TestCase
     {
         $sum = 1 + 1;
         $this->assertEquals(2, $sum);
+    }
+
+    public function testDebug()
+    {
+        GlobalConfig::getInstance()->setDebug();
+
+        $corpId     = lib_env('CORPID');
+        $corpSecret = lib_env('CORPSECRET');
+        $cacheKey   = $this->getCustomizeCacheKey($corpSecret);
+
+        $config  = new ReqConfCustomize($corpId, $corpSecret, $cacheKey);
+        $param   = new AddressBookDeptGetDetailParam();
+        $request = new AddressBookDeptGetDetailRequest();
+        $request->setParam($param);
+        $request->setConfig($config);
+        $param->id = 91;
+
+        $res = $request->execute();
+        dd($res);
     }
 
     public function testGetTagList()
@@ -50,8 +71,8 @@ class FirstTest extends TestCase
         $cacheKey   = $this->getCustomizeCacheKey($corpSecret);
 
         $config  = new ReqConfCustomize($corpId, $corpSecret, $cacheKey);
-        $param   = new CorpStaffGetDetailParam();
-        $request = new CorpStaffGetDetailRequest();
+        $param   = new AddressBookStaffGetDetailParam();
+        $request = new AddressBookStaffGetDetailRequest();
         $request->setParam($param);
         $request->setConfig($config);
         $param->userid = 'FengHaiNing';
