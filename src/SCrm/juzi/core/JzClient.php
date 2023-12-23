@@ -1,16 +1,15 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\juzi\core;
 
 
 use Douyuxingchen\ScrmWecomApi\Http\HttpClient;
 use Douyuxingchen\ScrmWecomApi\Http\HttpRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestInterface;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\token\CreateTokenRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\JzBaseRequestInterface;
 use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
 use Exception;
 
-class WeComClient
+class JzClient
 {
     private $httpRequest;
 
@@ -20,11 +19,11 @@ class WeComClient
     }
 
     /**
-     * @param BaseRequestInterface $request
+     * @param JzBaseRequestInterface $request
      * @return mixed
      * @throws Exception
      */
-    public function request(BaseRequestInterface $request)
+    public function request(JzBaseRequestInterface $request)
     {
         $params = $request->getParam();
         $config = $request->getConfig();
@@ -43,7 +42,7 @@ class WeComClient
 
     private static $defaultInstance;
 
-    public static function getInstance(): WeComClient
+    public static function getInstance(): JzClient
     {
 
         if (!(self::$defaultInstance instanceof self)) {
@@ -52,17 +51,11 @@ class WeComClient
         return self::$defaultInstance;
     }
 
-    private function getReqUrl(BaseRequestInterface $request): string
+    private function getReqUrl(JzBaseRequestInterface $request): string
     {
         $config     = $request->getConfig();
-        $urlPath    = $request->getUrlPath();
-        $requestUrl = $config->openRequestUrl . $urlPath;
-
-        if (!$request instanceof CreateTokenRequest) {
-            $accountToken = (new AccessTokenBuilder)->generate($request);
-            $requestUrl   .= "?access_token=$accountToken";
-        }
-        return $requestUrl;
+        $requestUrl = $request->getUrlPath();
+        return $requestUrl . "?token={$config->token}";
     }
 
     private function splicingParameters(string $method, $params)
