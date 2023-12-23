@@ -7,7 +7,7 @@ use Douyuxingchen\ScrmWecomApi\Http\HttpClient;
 use Douyuxingchen\ScrmWecomApi\Http\HttpRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestInterface;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\token\CreateTokenRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\utils\SignUtil;
+use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
 use Exception;
 
 class WeComClient
