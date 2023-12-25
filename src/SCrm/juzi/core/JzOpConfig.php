@@ -9,5 +9,4 @@ class JzOpConfig
     public $httpReadTimeout    = 5000;
 
     public $token;
-    public $is_debug;
 }

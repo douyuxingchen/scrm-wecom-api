@@ -11,18 +11,16 @@ use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisit
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_tag\listing\CustomerCorpTagListRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_tag\listing\param\CustomerCorpTagListParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfAbstract;
+use Douyuxingchen\ScrmWecomApi\Utils\TestBase;
 use Exception;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfCustomize;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
-use PHPUnit\Framework\TestCase;
 
-class WecomeTest extends TestCase
+class TestWeCom extends TestBase
 {
-    // ./vendor/bin/phpunit --filter testWecome ./tests/Unit/WecomeTest.php
-    public function testWecome()
+    // ./vendor/bin/phpunit --filter testMain ./tests/Unit/TestWeCom.php
+    public function testMain()
     {
         try {
-            GlobalConfig::getInstance()->setDebug();
             $mainConfig    = $this->getMainConf();
             $viceConfig    = $this->getViceConf();
             $backendConfig = $this->getBackendConf();

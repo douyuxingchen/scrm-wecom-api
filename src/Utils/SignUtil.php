@@ -4,6 +4,29 @@ namespace Douyuxingchen\ScrmWecomApi\Utils;
 
 class SignUtil
 {
+    // 全局变量：是否开发模式
+    private static $isDebug = false;
+
+    /**
+     * @desc 设置开发者模式
+     * Date: 2023/12/25 16:30
+     * @param bool $isDebug
+     */
+    public static function setDebug(bool $isDebug = true)
+    {
+        self::$isDebug = $isDebug;
+    }
+
+    /**
+     * @desc 获取是否开发者模式
+     * Date: 2023/12/25 16:33
+     * @return bool
+     */
+    public static function isDebug(): bool
+    {
+        return self::$isDebug;
+    }
+
     /**
      * @desc 序列化参数，入参必须为关联数组
      * Date: 2023/12/23 19:26

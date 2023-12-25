@@ -7,17 +7,15 @@ use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\enterprise\customer\listing\param\J
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\group\base\chat_list_member\JzChatListMemberRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\group\base\chat_list_member\param\JzChatListMemberParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\config\JzReqConfCustomize;
-use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\JzGlobalConfig;
+use Douyuxingchen\ScrmWecomApi\Utils\TestBase;
 use Exception;
-use PHPUnit\Framework\TestCase;
 
-class JuZiTest extends TestCase
+class TestJuZi extends TestBase
 {
-    // ./vendor/bin/phpunit --filter testJz ./tests/Unit/JuZiTest.php
-    public function testJz()
+    // ./vendor/bin/phpunit --filter testMain ./tests/Unit/TestJuZi.php
+    public function testMain()
     {
         try {
-            JzGlobalConfig::getInstance()->setDebug();
             $mainToken  = lib_env('JU_ZI_TOKEN');
             $groupToken = lib_env('JU_ZI_GROUP_TOKEN');
             $mainConf   = new JzReqConfCustomize($mainToken);

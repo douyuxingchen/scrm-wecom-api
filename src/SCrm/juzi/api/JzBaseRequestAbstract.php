@@ -2,10 +2,10 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\juzi\api;
 
-use Exception;
-use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\config\JzReqConfMain;
+use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\JzClient;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\JzGlobalConfig;
+use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\config\JzReqConfMain;
 
 abstract class JzBaseRequestAbstract implements JzBaseRequestInterface
 {
@@ -17,7 +17,7 @@ abstract class JzBaseRequestAbstract implements JzBaseRequestInterface
 
     public function __construct()
     {
-        if (!JzGlobalConfig::getInstance()->is_debug) {
+        if (!SignUtil::isDebug()) {
             $this->setConfig(new JzReqConfMain);
         }
     }
@@ -46,25 +46,16 @@ abstract class JzBaseRequestAbstract implements JzBaseRequestInterface
 
     public function execute()
     {
-        try {
-            $resp = JzClient::getInstance()->request($this);
+        $resp = JzClient::getInstance()->request($this);
 
-            if (property_exists($resp, 'errcode')) {
-                $resp->success = $resp->errcode == self::SUC_CODE;
-            }
-            if (property_exists($resp, 'code')) {
-                $resp->success = $resp->code == self::SUC_CODE;
-            }
-
-            return $resp;
-        } catch (Exception $e) {
-            var_dump([
-                'code' => $e->getCode(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-                'msg'  => $e->getMessage(),
-            ]);
+        if (property_exists($resp, 'errcode')) {
+            $resp->success = $resp->errcode == self::SUC_CODE;
         }
+        if (property_exists($resp, 'code')) {
+            $resp->success = $resp->code == self::SUC_CODE;
+        }
+
+        return $resp;
     }
 
 }

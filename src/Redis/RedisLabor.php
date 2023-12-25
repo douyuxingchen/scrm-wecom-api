@@ -2,10 +2,10 @@
 
 namespace Douyuxingchen\ScrmWecomApi\Redis;
 
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
 use Exception;
-use Illuminate\Redis\Connections\Connection;
 use Illuminate\Redis\RedisManager;
+use Illuminate\Redis\Connections\Connection;
+use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
 
 /**
  * Class RedisLabor
@@ -35,7 +35,7 @@ class RedisLabor
     private function __construct($config)
     {
         // 初始化redis配置
-        $envMethod = GlobalConfig::getInstance()->is_debug ? 'lib_env' : 'env';
+        $envMethod = SignUtil::isDebug() ? 'lib_env' : 'env';
         if (empty($config)) {
             $config['host']     = $envMethod('REDIS_HOST');
             $config['port']     = $envMethod('REDIS_PORT');

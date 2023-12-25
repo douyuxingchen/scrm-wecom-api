@@ -3,7 +3,7 @@
 ## 常用命令
 ```bash
 # 测试指定文件
-./vendor/bin/phpunit --filter testMain ./tests/Unit/TestJuZi.php
+./vendor/bin/phpunit --filter testMain ./tests/Unit/TestWeiBan.php
 ```
 
 ## 如果读取环境变量

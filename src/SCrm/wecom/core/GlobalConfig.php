@@ -32,9 +32,4 @@ class GlobalConfig extends WeComOpConfig
         $this->cache_key   = $reqConf->getCacheKey();
         $this->corp_secret = $reqConf->getCorpSecret();
     }
-
-    public function setDebug()
-    {
-        $this->is_debug = true;
-    }
 }

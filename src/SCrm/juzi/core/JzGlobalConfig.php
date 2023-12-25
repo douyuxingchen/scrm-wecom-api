@@ -30,9 +30,4 @@ class JzGlobalConfig extends JzOpConfig
     {
         $this->token = $reqConf->getToken();
     }
-
-    public function setDebug()
-    {
-        $this->is_debug = true;
-    }
 }

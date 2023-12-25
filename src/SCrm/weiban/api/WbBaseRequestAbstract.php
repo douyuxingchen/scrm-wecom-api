@@ -1,13 +1,13 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api;
 
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfMain;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\WeComClient;
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\core\config\WbReqConfMain;
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\core\WbClient;
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\core\WbGlobalConfig;
 use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
 
-abstract class BaseRequestAbstract implements BaseRequestInterface
+abstract class WbBaseRequestAbstract implements WbBaseRequestInterface
 {
     const SUC_CODE = 0;
 
@@ -18,7 +18,7 @@ abstract class BaseRequestAbstract implements BaseRequestInterface
     public function __construct()
     {
         if (!SignUtil::isDebug()) {
-            $this->setConfig(new ReqConfMain);
+            $this->setConfig(new WbReqConfMain());
         }
     }
 
@@ -34,9 +34,9 @@ abstract class BaseRequestAbstract implements BaseRequestInterface
 
     public function setConfig($config)
     {
-        GlobalConfig::getInstance()->setCorpConf($config);
+        WbGlobalConfig::getInstance()->setCorpConf($config);
 
-        $this->config = GlobalConfig::getInstance();
+        $this->config = WbGlobalConfig::getInstance();
     }
 
     public function getConfig()
@@ -46,7 +46,7 @@ abstract class BaseRequestAbstract implements BaseRequestInterface
 
     public function execute()
     {
-        $responseData = WeComClient::getInstance()->request($this);
+        $responseData = WbClient::getInstance()->request($this);
 
         $responseData->success = $responseData->errcode == self::SUC_CODE;
 

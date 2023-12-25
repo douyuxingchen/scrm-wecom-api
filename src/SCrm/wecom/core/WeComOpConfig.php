@@ -11,5 +11,4 @@ class WeComOpConfig
     public $corp_id;
     public $corp_secret;
     public $cache_key;
-    public $is_debug;
 }
