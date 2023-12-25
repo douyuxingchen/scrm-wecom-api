@@ -18,8 +18,7 @@ class TestWeiBan extends TestBase
         try {
             $corpId    = lib_env('WEI_BAN_CORP_ID');
             $mainToken = lib_env('WEI_BAN_SECRET');
-            $cacheKey  = $this->getCustomizeCacheKey($mainToken);
-            $mainConf  = new WbReqConfCustomize($corpId, $mainToken, $cacheKey);
+            $mainConf  = new WbReqConfCustomize($corpId, $mainToken);
 
             /****************微伴员工详情 start*****************/
             $wbStaffDetailParam   = new WbStaffDetailParam();
@@ -51,10 +50,5 @@ class TestWeiBan extends TestBase
         }
 
         $this->assertEquals(1, 1);
-    }
-
-    private function getCustomizeCacheKey($corpSecret): string
-    {
-        return 'wei_ban_access_token_customize_' . md5($corpSecret);
     }
 }

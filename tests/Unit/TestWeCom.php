@@ -77,10 +77,9 @@ class TestWeCom extends TestBase
      */
     private function getMainConf(): ReqConfAbstract
     {
-        $corpId       = lib_env('CORPID');
-        $mainSecret   = lib_env('CORPSECRET');
-        $mainCacheKey = $this->getCustomizeCacheKey($mainSecret);
-        return new ReqConfCustomize($corpId, $mainSecret, $mainCacheKey);
+        $corpId     = lib_env('CORPID');
+        $mainSecret = lib_env('CORPSECRET');
+        return new ReqConfCustomize($corpId, $mainSecret);
     }
 
     /**
@@ -91,10 +90,9 @@ class TestWeCom extends TestBase
      */
     private function getViceConf(): ReqConfAbstract
     {
-        $corpId       = lib_env('CORPID');
-        $viceSecret   = lib_env('CORPSECRET_AGENT');
-        $viceCacheKey = $this->getCustomizeCacheKey($viceSecret);
-        return new ReqConfCustomize($corpId, $viceSecret, $viceCacheKey);
+        $corpId     = lib_env('CORPID');
+        $viceSecret = lib_env('CORPSECRET_AGENT');
+        return new ReqConfCustomize($corpId, $viceSecret);
     }
 
     /**
@@ -105,14 +103,9 @@ class TestWeCom extends TestBase
      */
     private function getBackendConf(): ReqConfAbstract
     {
-        $corpId                = lib_env('CORPID');
-        $manageBackendSecret   = lib_env('CORPSECRET_MANAGE_BACKEND');
-        $manageBackendCacheKey = $this->getCustomizeCacheKey($manageBackendSecret);
-        return new ReqConfCustomize($corpId, $manageBackendSecret, $manageBackendCacheKey);
+        $corpId              = lib_env('CORPID');
+        $manageBackendSecret = lib_env('CORPSECRET_MANAGE_BACKEND');
+        return new ReqConfCustomize($corpId, $manageBackendSecret);
     }
 
-    private function getCustomizeCacheKey($corpSecret): string
-    {
-        return 'we_com_access_token_customize_' . md5($corpSecret);
-    }
 }

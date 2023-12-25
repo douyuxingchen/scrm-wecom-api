@@ -6,13 +6,11 @@ class WbReqConfCustomize extends WbReqConfAbstract
 {
     private $corpId;
     private $secret;
-    private $cacheKey;
 
-    public function __construct($corpId, $secret, $cacheKey)
+    public function __construct($corpId, $secret)
     {
-        $this->corpId   = $corpId;
-        $this->secret   = $secret;
-        $this->cacheKey = $cacheKey;
+        $this->corpId = $corpId;
+        $this->secret = $secret;
     }
 
     public function getCorpId()
@@ -27,6 +25,6 @@ class WbReqConfCustomize extends WbReqConfAbstract
 
     public function getCacheKey(): string
     {
-        return $this->cacheKey;
+        return 'wei_ban_access_token_customize_' . md5($this->secret);
     }
 }
