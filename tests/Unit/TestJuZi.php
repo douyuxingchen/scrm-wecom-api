@@ -2,6 +2,8 @@
 
 namespace Unit;
 
+use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\enterprise\chat\wecomChatId_to_wxid\JzWecomChatIdToWxIdRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\enterprise\chat\wecomChatId_to_wxid\param\JzWecomChatIdToWxIdParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\enterprise\customer\listing\JzCustomerListRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\enterprise\customer\listing\param\JzCustomerListParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\group\base\chat_list_member\JzChatListMemberRequest;
@@ -42,6 +44,17 @@ class TestJuZi extends TestBase
 
             $jzChatListMemRes = $jzChatListMemReq->execute();
             /****************句子客户列表end*****************/
+
+            /****************企微群ID转句子群ID start*****************/
+            $jzWecomChatIdToWxIdParam = new JzWecomChatIdToWxIdParam();
+            $jzWecomChatIdToWxIdReq   = new JzWecomChatIdToWxIdRequest();
+            $jzWecomChatIdToWxIdReq->setParam($jzWecomChatIdToWxIdParam);
+            $jzWecomChatIdToWxIdReq->setConfig($mainConf);
+            $jzWecomChatIdToWxIdParam->wecomChatId = 'wrr2IaCgAA1IcYRbP6IlAcJcXjoAh92g';
+
+            $jzWecomChatIdToWxIdRes = $jzWecomChatIdToWxIdReq->execute();
+            dd($jzWecomChatIdToWxIdRes);
+            /****************企微群ID转句子群ID end*****************/
 
         } catch (Exception $e) {
             dd($e->getMessage());
