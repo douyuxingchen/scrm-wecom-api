@@ -8,6 +8,7 @@ use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\staff\detail\param\St
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\staff\detail\StaffDetailRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\customer_list\CustomerAcquisitionCustomerListRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\customer_list\param\CustomerAcquisitionCustomerListParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\listing\CustomerAcquisitionListRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_tag\listing\CustomerCorpTagListRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_tag\listing\param\CustomerCorpTagListParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfAbstract;
@@ -61,6 +62,12 @@ class TestWeCom extends TestBase
             $caCustomerListParam->link_id = 'cawcde0f5d477cdf06';
 
             $caCustomerListRes = $caCustomerListRequest->execute();
+            /****************获客助手列表end*****************/
+            /****************获客助手列表start*****************/
+            $caListRequest = new CustomerAcquisitionListRequest();
+            $caListRequest->setConfig($viceConfig);
+
+            $caListRes = $caListRequest->execute();
             /****************获客助手列表end*****************/
         } catch (Exception $e) {
             dd($e->getMessage());
