@@ -1,6 +1,6 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\enterprise\wxid_to_externalUserId\listing;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\enterprise\customer\wxid_to_externalUserId;
 
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\JzBaseRequestAbstract;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\enum\Domain;

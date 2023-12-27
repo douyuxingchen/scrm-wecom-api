@@ -5,7 +5,7 @@ namespace Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\enterprise\staff\listing;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\JzBaseRequestAbstract;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\enum\Domain;
 
-class JzCustomerListRequest extends JzBaseRequestAbstract
+class JzStaffListRequest extends JzBaseRequestAbstract
 {
 
     public function getMethod(): string

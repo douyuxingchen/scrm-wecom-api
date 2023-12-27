@@ -1,6 +1,6 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_tag\udpate\param;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_tag\update\param;
 
 // 注意:修改后的标签组不能和已有的标签组重名，标签也不能和同一标签组下的其他标签重名。
 

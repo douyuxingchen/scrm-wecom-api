@@ -2,7 +2,7 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\sidebar\auth_info\param;
 
-class WbCustomerDetailParam
+class WbSidebarAuthInfoParam
 {
     /*
      * 必传 | string | 企业员工身份校验凭证
