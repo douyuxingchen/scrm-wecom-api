@@ -54,7 +54,8 @@ class TestWeCom extends TestBase
 
             $staffDetailRes = $staffDetailRequest->execute();
             /****************员工详情end*****************/
-            /****************获客助手列表start*****************/
+
+            /****************获客助手客户详情start*****************/
             $caCustomerListParam   = new CustomerAcquisitionCustomerListParam();
             $caCustomerListRequest = new CustomerAcquisitionCustomerListRequest();
             $caCustomerListRequest->setConfig($viceConfig);
@@ -62,7 +63,7 @@ class TestWeCom extends TestBase
             $caCustomerListParam->link_id = 'cawcde0f5d477cdf06';
 
             $caCustomerListRes = $caCustomerListRequest->execute();
-            /****************获客助手列表end*****************/
+            /****************获客助手客户详情end*****************/
             /****************获客助手列表start*****************/
             $caListRequest = new CustomerAcquisitionListRequest();
             $caListRequest->setConfig($viceConfig);

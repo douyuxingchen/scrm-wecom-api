@@ -2,6 +2,7 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api;
 
+use Douyuxingchen\ScrmWecomApi\Utils\FinalResp;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfMain;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\WeComClient;
@@ -9,8 +10,6 @@ use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
 
 abstract class BaseRequestAbstract implements BaseRequestInterface
 {
-    const SUC_CODE = 0;
-
     protected $param;
 
     protected $config;
@@ -44,13 +43,21 @@ abstract class BaseRequestAbstract implements BaseRequestInterface
         return $this->config;
     }
 
-    public function execute()
+    /**
+     * @desc 执行请求
+     * Date: 2024/1/3 18:48
+     * @return FinalResp
+     * @throws \Exception
+     */
+    public function execute(): FinalResp
     {
-        $responseData = WeComClient::getInstance()->request($this);
-
-        $responseData->success = $responseData->errcode == self::SUC_CODE;
-
-        return $responseData;
+        $respData = WeComClient::getInstance()->request($this);
+        // 错误码
+        $code = $respData['errcode'] ?? -1000;
+        // 错误信息
+        $message = $respData['errmsg'] ?? 'failed';
+        // 初始化响应类
+        return FinalResp::getInstance()->setCode($code)->setMessage($message)->setData($respData);
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\juzi\api;
 
+use Douyuxingchen\ScrmWecomApi\Utils\FinalResp;
 use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\JzClient;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\JzGlobalConfig;
@@ -9,8 +10,6 @@ use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\config\JzReqConfMain;
 
 abstract class JzBaseRequestAbstract implements JzBaseRequestInterface
 {
-    const SUC_CODE = 0;
-
     protected $param;
 
     protected $config;
@@ -44,18 +43,26 @@ abstract class JzBaseRequestAbstract implements JzBaseRequestInterface
         return $this->config;
     }
 
-    public function execute()
+    /**
+     * @desc 执行请求
+     * @return FinalResp
+     * @throws \Exception
+     */
+    public function execute(): FinalResp
     {
-        $resp = JzClient::getInstance()->request($this);
+        $responseData = JzClient::getInstance()->request($this);
 
-        if (property_exists($resp, 'errcode')) {
-            $resp->success = $resp->errcode == self::SUC_CODE;
+        $code = -1000;
+        $msg  = 'failed';
+        if (array_key_exists('errcode', $responseData)) {
+            $code = $responseData['errcode'];
+            $msg  = $responseData['errmsg'];
         }
-        if (property_exists($resp, 'code')) {
-            $resp->success = $resp->code == self::SUC_CODE;
+        if (array_key_exists('code', $responseData)) {
+            $code = $responseData['code'];
+            $msg  = $responseData['message'];
         }
-
-        return $resp;
+        return FinalResp::getInstance()->setCode($code)->setMessage($msg)->setData($responseData);
     }
 
 }

@@ -38,7 +38,7 @@ class WbClient
 
         $httpResponse = HttpClient::getInstance()->$method($this->httpRequest);
 
-        return json_decode($httpResponse->body, false, 512, JSON_UNESCAPED_UNICODE);
+        return json_decode($httpResponse->body, true);
     }
 
     private static $defaultInstance;
