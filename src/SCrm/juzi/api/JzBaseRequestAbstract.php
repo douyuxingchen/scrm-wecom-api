@@ -43,26 +43,9 @@ abstract class JzBaseRequestAbstract implements JzBaseRequestInterface
         return $this->config;
     }
 
-    /**
-     * @desc 执行请求
-     * @return FinalResp
-     * @throws \Exception
-     */
     public function execute(): FinalResp
     {
-        $responseData = JzClient::getInstance()->request($this);
-
-        $code = -1000;
-        $msg  = 'failed';
-        if (array_key_exists('errcode', $responseData)) {
-            $code = $responseData['errcode'];
-            $msg  = $responseData['errmsg'];
-        }
-        if (array_key_exists('code', $responseData)) {
-            $code = $responseData['code'];
-            $msg  = $responseData['message'];
-        }
-        return FinalResp::getInstance()->setCode($code)->setMessage($msg)->setData($responseData);
+        return JzClient::getInstance()->request($this);
     }
 
 }

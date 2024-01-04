@@ -51,8 +51,16 @@ class AccessTokenBuilder
         $createTokenParam->corpid = $config->corp_id;
         // set param secret
         $createTokenParam->corpsecret = $config->corp_secret;
+
+        $tokenRes = $createTokenRequest->execute();
+
+        if (!$tokenRes->isSuccess()) {
+            $throwMsg = "Failed to obtain token:{$tokenRes->toJson()}";
+            throw new Exception($throwMsg);
+        }
+
         // get token objet
-        return AccessToken::wrap($createTokenRequest->execute());
+        return AccessToken::wrap($tokenRes);
     }
 
     private function setTokenStore($tokenKey, AccessToken $tokenObj)

@@ -51,8 +51,16 @@ class WbAccessTokenBuilder
         $createTokenParam->corp_id = $config->corp_id;
         // set param secret
         $createTokenParam->secret = $config->secret;
+
+        $tokenRes = $createTokenRequest->execute();
+
+        if (!$tokenRes->isSuccess()) {
+            $throwMsg = "Failed to obtain token:{$tokenRes->toJson()}";
+            throw new Exception($throwMsg);
+        }
+
         // get token objet
-        return WbAccessToken::wrap($createTokenRequest->execute());
+        return WbAccessToken::wrap($tokenRes);
     }
 
     private function setTokenStore($tokenKey, WbAccessToken $tokenObj)

@@ -2,34 +2,24 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core;
 
+use Douyuxingchen\ScrmWecomApi\Utils\FinalResp;
+
 class AccessToken
 {
-    private $errCode;
-    private $message;
     private $accessToken;
     private $expiresIn;
 
-    public static function wrap($resp)
+    public static function wrap(FinalResp $resp): AccessToken
     {
-        $accessToken = new AccessToken();
-        if (property_exists($resp, "errcode")) {
-            $accessToken->setErrCode($resp->errcode);
+        $respData    = $resp->getData();
+        $accessToken = new self();
+        if (array_key_exists('expires_in', $respData)) {
+            $accessToken->setExpiresIn($respData['expires_in']);
         }
-        if (property_exists($resp, "errmsg")) {
-            $accessToken->setMessage($resp->errmsg);
-        }
-        if (property_exists($resp, "expires_in")) {
-            $accessToken->setExpiresIn($resp->expires_in);
-        }
-        if (property_exists($resp, "access_token")) {
-            $accessToken->setAccessToken($resp->access_token);
+        if (array_key_exists('access_token', $respData)) {
+            $accessToken->setAccessToken($respData['access_token']);
         }
         return $accessToken;
-    }
-
-    public function isSuccess()
-    {
-        return $this->errCode == 0;
     }
 
     public function getAccessToken()
@@ -40,26 +30,6 @@ class AccessToken
     public function setAccessToken($accessToken)
     {
         $this->accessToken = $accessToken;
-    }
-
-    public function getErrCode()
-    {
-        return $this->errCode;
-    }
-
-    public function setErrCode($errCode)
-    {
-        $this->errCode = $errCode;
-    }
-
-    public function getMessage()
-    {
-        return $this->message;
-    }
-
-    public function setMessage($message)
-    {
-        $this->message = $message;
     }
 
     public function setExpiresIn($expiresIn)

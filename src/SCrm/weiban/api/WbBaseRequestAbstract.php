@@ -43,21 +43,9 @@ abstract class WbBaseRequestAbstract implements WbBaseRequestInterface
         return $this->config;
     }
 
-    /**
-     * @desc 执行请求
-     * Date: 2024/1/3 19:03
-     * @return FinalResp
-     * @throws \Exception
-     */
     public function execute(): FinalResp
     {
-        $respData = WbClient::getInstance()->request($this);
-        // 错误码
-        $code = $respData['errcode'] ?? -1000;
-        // 错误信息
-        $message = $respData['errmsg'] ?? 'failed';
-        // 初始化响应类
-        return FinalResp::getInstance()->setCode($code)->setMessage($message)->setData($respData);
+        return WbClient::getInstance()->request($this);
     }
 
 }

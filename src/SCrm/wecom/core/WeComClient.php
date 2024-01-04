@@ -5,10 +5,11 @@ namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core;
 
 use Douyuxingchen\ScrmWecomApi\Http\HttpClient;
 use Douyuxingchen\ScrmWecomApi\Http\HttpRequest;
+use Douyuxingchen\ScrmWecomApi\Http\HttpResponse;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestInterface;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\token\CreateTokenRequest;
+use Douyuxingchen\ScrmWecomApi\Utils\FinalResp;
 use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
-use Exception;
 
 class WeComClient
 {
@@ -19,12 +20,7 @@ class WeComClient
         $this->httpRequest = new HttpRequest();
     }
 
-    /**
-     * @param BaseRequestInterface $request
-     * @return mixed
-     * @throws Exception
-     */
-    public function request(BaseRequestInterface $request)
+    public function request(BaseRequestInterface $request): FinalResp
     {
         $params = $request->getParam();
         $config = $request->getConfig();
@@ -38,18 +34,18 @@ class WeComClient
 
         $httpResponse = HttpClient::getInstance()->$method($this->httpRequest);
 
-        return json_decode($httpResponse->body, true);
+        return $this->finalResponse($httpResponse);
     }
 
-    private static $defaultInstance;
-
-    public static function getInstance(): WeComClient
+    private function finalResponse(HttpResponse $httpResponse): FinalResp
     {
-
-        if (!(self::$defaultInstance instanceof self)) {
-            self::$defaultInstance = new self();
-        }
-        return self::$defaultInstance;
+        // 解析响应数据
+        $respData = json_decode($httpResponse->body, true);
+        // 封装响应对象
+        return FinalResp::getInstance()
+            ->setMessage($respData['errmsg'])
+            ->setCode($respData['errcode'])
+            ->setData($respData);
     }
 
     private function getReqUrl(BaseRequestInterface $request): string
@@ -72,5 +68,16 @@ class WeComClient
         } else {
             $this->httpRequest->body = SignUtil::marshal($params);
         }
+    }
+
+    private static $defaultInstance;
+
+    public static function getInstance(): WeComClient
+    {
+
+        if (!(self::$defaultInstance instanceof self)) {
+            self::$defaultInstance = new self();
+        }
+        return self::$defaultInstance;
     }
 }

@@ -5,9 +5,10 @@ namespace Douyuxingchen\ScrmWecomApi\SCrm\juzi\core;
 
 use Douyuxingchen\ScrmWecomApi\Http\HttpClient;
 use Douyuxingchen\ScrmWecomApi\Http\HttpRequest;
+use Douyuxingchen\ScrmWecomApi\Http\HttpResponse;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\JzBaseRequestInterface;
+use Douyuxingchen\ScrmWecomApi\Utils\FinalResp;
 use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
-use Exception;
 
 class JzClient
 {
@@ -18,12 +19,7 @@ class JzClient
         $this->httpRequest = new HttpRequest();
     }
 
-    /**
-     * @param JzBaseRequestInterface $request
-     * @return mixed
-     * @throws Exception
-     */
-    public function request(JzBaseRequestInterface $request)
+    public function request(JzBaseRequestInterface $request): FinalResp
     {
         $params = $request->getParam();
         $config = $request->getConfig();
@@ -37,18 +33,25 @@ class JzClient
 
         $httpResponse = HttpClient::getInstance()->$method($this->httpRequest);
 
-        return json_decode($httpResponse->body, true);
+        return $this->finalResponse($httpResponse);
     }
 
-    private static $defaultInstance;
-
-    public static function getInstance(): JzClient
+    private function finalResponse(HttpResponse $httpResponse): FinalResp
     {
-
-        if (!(self::$defaultInstance instanceof self)) {
-            self::$defaultInstance = new self();
+        // 解析响应数据
+        $respData = json_decode($httpResponse->body, true);
+        // 封装响应对象
+        $code = -1000;
+        $msg  = 'failed';
+        if (array_key_exists('errcode', $respData)) {
+            $code = $respData['errcode'];
+            $msg  = $respData['errmsg'] ?? '';
         }
-        return self::$defaultInstance;
+        if (array_key_exists('code', $respData)) {
+            $code = $respData['code'];
+            $msg  = $respData['message'] ?? '';
+        }
+        return FinalResp::getInstance()->setCode($code)->setMessage($msg)->setData($respData);
     }
 
     private function getReqUrl(JzBaseRequestInterface $request): string
@@ -65,5 +68,16 @@ class JzClient
         } else {
             $this->httpRequest->body = SignUtil::marshal($params);
         }
+    }
+
+    private static $defaultInstance;
+
+    public static function getInstance(): JzClient
+    {
+
+        if (!(self::$defaultInstance instanceof self)) {
+            self::$defaultInstance = new self();
+        }
+        return self::$defaultInstance;
     }
 }
