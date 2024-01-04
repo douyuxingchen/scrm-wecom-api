@@ -51,15 +51,13 @@ class WbAccessTokenBuilder
         $createTokenParam->corp_id = $config->corp_id;
         // set param secret
         $createTokenParam->secret = $config->secret;
-
+        // request obtain token
         $tokenRes = $createTokenRequest->execute();
-
         if (!$tokenRes->isSuccess()) {
             $throwMsg = "Failed to obtain token:{$tokenRes->toJson()}";
             throw new Exception($throwMsg);
         }
-
-        // get token objet
+        // encapsulating token data
         return WbAccessToken::wrap($tokenRes);
     }
 

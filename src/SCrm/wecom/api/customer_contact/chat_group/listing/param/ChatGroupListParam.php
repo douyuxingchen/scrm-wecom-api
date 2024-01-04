@@ -2,7 +2,7 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\chat_group\listing\param;
 
-class ChatGroupListRequest
+class ChatGroupListParam
 {
     /*
      * 非必传 | 客户群跟进状态过滤

@@ -51,15 +51,13 @@ class AccessTokenBuilder
         $createTokenParam->corpid = $config->corp_id;
         // set param secret
         $createTokenParam->corpsecret = $config->corp_secret;
-
+        // request obtain token
         $tokenRes = $createTokenRequest->execute();
-
         if (!$tokenRes->isSuccess()) {
             $throwMsg = "Failed to obtain token:{$tokenRes->toJson()}";
             throw new Exception($throwMsg);
         }
-
-        // get token objet
+        // encapsulating token data
         return AccessToken::wrap($tokenRes);
     }
 
