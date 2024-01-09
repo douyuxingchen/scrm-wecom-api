@@ -9,12 +9,12 @@ class WbReqConfMain extends WbReqConfAbstract
 
     public function getCorpId()
     {
-        return config('qy_weixin.weiban_passport.corpid');
+        return config('qy_weixin.weiban_passport.corp_id');
     }
 
     public function getSecret()
     {
-        return config('qy_weixin.weiban_passport.corpsecret');
+        return config('qy_weixin.weiban_passport.secret');
     }
 
     public function getCacheKey(): string

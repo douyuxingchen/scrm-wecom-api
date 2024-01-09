@@ -6,6 +6,8 @@ use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\contact_way\listing\param\WbConta
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\contact_way\listing\WbContactWayListRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\staff\detail\param\WbStaffDetailParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\staff\detail\WbStaffDetailRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\staff\listing\param\WbStaffListParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\staff\listing\WbStaffListRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\core\config\WbReqConfCustomize;
 use Douyuxingchen\ScrmWecomApi\Utils\TestBase;
 use Exception;
@@ -20,12 +22,21 @@ class TestWeiBan extends TestBase
             $mainToken = lib_env('WEI_BAN_SECRET');
             $mainConf  = new WbReqConfCustomize($corpId, $mainToken);
 
+            /****************微伴员工列表 start*****************/
+            $wbStaffListParam   = new WbStaffListParam();
+            $wbStaffListRequest = new WbStaffListRequest();
+            $wbStaffListRequest->setParam($wbStaffListParam);
+            $wbStaffListRequest->setConfig($mainConf);
+
+            $wbStaffDetailRes = $wbStaffListRequest->execute();
+            /****************微伴员工列表 end*****************/
+
             /****************微伴员工详情 start*****************/
             $wbStaffDetailParam   = new WbStaffDetailParam();
             $wbStaffDetailRequest = new WbStaffDetailRequest();
             $wbStaffDetailRequest->setParam($wbStaffDetailParam);
             $wbStaffDetailRequest->setConfig($mainConf);
-            $wbStaffDetailParam->staff_id = 'wogizUDQAAgiSXoHZ6lKwCZ_12r6YUMA';
+            $wbStaffDetailParam->staff_id = 'wogizUDQAAt1f8wupfTlFniOOjtNuyEQ';
 
             $wbStaffDetailRes = $wbStaffDetailRequest->execute();
             /****************微伴员工详情 end*****************/
