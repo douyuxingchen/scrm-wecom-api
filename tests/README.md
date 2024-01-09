@@ -6,7 +6,7 @@
 ./vendor/bin/phpunit tests/Feature/FeigeTest.php
 ```
 
-## 如果读取环境变量
+## 如何读取环境变量
 ```php
 # 读取PHP容器内配置的环境变量
 getenv('APP_ENV');
