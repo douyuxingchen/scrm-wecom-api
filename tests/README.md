@@ -2,8 +2,14 @@
 
 ## 常用命令
 ```bash
-# 测试指定文件
-./vendor/bin/phpunit tests/Feature/FeigeTest.php
+# 企业微信API
+./vendor/bin/phpunit --filter testMain ./tests/Unit/TestWeCom.php
+
+# 微伴助手API
+./vendor/bin/phpunit --filter testMain ./tests/Unit/TestWeiBan.php
+
+# 句子秒回API
+./vendor/bin/phpunit --filter testMain ./tests/Unit/TestJuZi.php
 ```
 
 ## 如何读取环境变量
