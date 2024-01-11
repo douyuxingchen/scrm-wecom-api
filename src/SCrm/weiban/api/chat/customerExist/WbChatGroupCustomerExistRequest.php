@@ -1,10 +1,10 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\is_in_chat;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\customerExist;
 
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\WbBaseRequestAbstract;
 
-class WbCustomerIsInChatRequest extends WbBaseRequestAbstract
+class WbChatGroupCustomerExistRequest extends WbBaseRequestAbstract
 {
     public function getMethod(): string
     {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\is_in_chat\param;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\customerExist\param;
 
-class WbCustomerIsInChatParam
+class WbChatGroupCustomerExistParam
 {
     /*
      * 必传 | string | 企业群聊id
