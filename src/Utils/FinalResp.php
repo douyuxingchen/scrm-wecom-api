@@ -91,11 +91,16 @@ class FinalResp
 
     /**
      * @desc 获取返回的数据
+     * @param string $key
      * @return array|null
      */
-    public function getData(): ?array
+    public function getData(string $key = ''): ?array
     {
-        return $this->data;
+        if ($key) {
+            return $this->data[$key] ?? [];
+        } else {
+            return $this->data;
+        }
     }
 
     /**

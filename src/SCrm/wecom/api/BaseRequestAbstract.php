@@ -14,6 +14,8 @@ abstract class BaseRequestAbstract implements BaseRequestInterface
 
     protected $config;
 
+    protected $isNeedToken = true;
+
     public function __construct()
     {
         if (!SignUtil::isDebug()) {
@@ -41,6 +43,11 @@ abstract class BaseRequestAbstract implements BaseRequestInterface
     public function getConfig()
     {
         return $this->config;
+    }
+
+    public function isNeedToken(): bool
+    {
+        return $this->isNeedToken;
     }
 
     public function execute(): FinalResp

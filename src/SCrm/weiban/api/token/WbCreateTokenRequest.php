@@ -6,6 +6,16 @@ use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\WbBaseRequestAbstract;
 
 class WbCreateTokenRequest extends WbBaseRequestAbstract
 {
+    public function setConfig($config)
+    {
+        $this->config = $config;
+    }
+
+    public function isNeedToken(): bool
+    {
+        return false;
+    }
+
     public function getMethod(): string
     {
         return 'POST';
@@ -14,10 +24,5 @@ class WbCreateTokenRequest extends WbBaseRequestAbstract
     public function getUrlPath(): string
     {
         return '/open-api/access_token/get';
-    }
-
-    public function setConfig($config)
-    {
-        $this->config = $config;
     }
 }
