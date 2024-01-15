@@ -6,6 +6,8 @@ use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\department\detail\Dep
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\department\detail\param\DepartmentDetailParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\staff\detail\param\StaffDetailParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\staff\detail\StaffDetailRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\chat_group\detail\ChatGroupDetailRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\chat_group\detail\param\ChatGroupDetailParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\customer_list\CustomerAcquisitionCustomerListRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\customer_list\param\CustomerAcquisitionCustomerListParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\listing\CustomerAcquisitionListRequest;
@@ -25,6 +27,16 @@ class TestWeCom extends TestBase
             $mainConfig    = $this->getMainConf();
             $viceConfig    = $this->getViceConf();
             $backendConfig = $this->getBackendConf();
+
+            /****************群详情start*****************/
+            $chatDetailParam   = new ChatGroupDetailParam();
+            $chatDetailRequest = new ChatGroupDetailRequest();
+            $chatDetailRequest->setParam($chatDetailParam);
+            $chatDetailRequest->setConfig($mainConfig);
+            $chatDetailParam->chat_id = 'wrr2IaCgAAfm13_6di8RpdG5r8ytvlBQ';
+
+            $chatDetail = $chatDetailRequest->execute();
+            /****************群详情end*****************/
 
             /****************部门详情start*****************/
             $deptDetailParam   = new DepartmentDetailParam();
