@@ -2,17 +2,12 @@
 
 namespace Unit;
 
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\department\detail\DepartmentDetailRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\department\detail\param\DepartmentDetailParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\staff\detail\param\StaffDetailParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\address_book\staff\detail\StaffDetailRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\chat_group\detail\ChatGroupDetailRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\chat_group\detail\param\ChatGroupDetailParam;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\customer_list\CustomerAcquisitionCustomerListRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\customer_list\param\CustomerAcquisitionCustomerListParam;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\listing\CustomerAcquisitionListRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_tag\listing\CustomerCorpTagListRequest;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_tag\listing\param\CustomerCorpTagListParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer\detail\CustomerDetailRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer\detail\param\CustomerDetailParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfAbstract;
 use Douyuxingchen\ScrmWecomApi\Utils\TestBase;
 use Exception;
@@ -38,50 +33,26 @@ class TestWeCom extends TestBase
             $chatDetail = $chatDetailRequest->execute();
             /****************群详情end*****************/
 
-            /****************部门详情start*****************/
-            $deptDetailParam   = new DepartmentDetailParam();
-            $deptDetailRequest = new DepartmentDetailRequest();
-            $deptDetailRequest->setParam($deptDetailParam);
-            $deptDetailRequest->setConfig($mainConfig);
-            $deptDetailParam->id = 91;
-
-            $deptDetailRes = $deptDetailRequest->execute();
-            /****************部门详情start*****************/
-
-            /****************标签列表start*****************/
-            $corpTagListParam   = new CustomerCorpTagListParam();
-            $corpTagListRequest = new CustomerCorpTagListRequest();
-            $corpTagListRequest->setParam($corpTagListParam);
-            $corpTagListRequest->setConfig($mainConfig);
-            $corpTagListParam->tag_id = 'etr2IaCgAAStCgcpA_fM1Lg-Nsw5zN2A';
-
-            $corpTagListRes = $corpTagListRequest->execute();
-            /****************标签列表end*****************/
             /****************员工详情start*****************/
             $staffDetailParam   = new StaffDetailParam();
             $staffDetailRequest = new StaffDetailRequest();
             $staffDetailRequest->setParam($staffDetailParam);
             $staffDetailRequest->setConfig($backendConfig);
-            $staffDetailParam->userid = 'FengHaiNing';
+            $staffDetailParam->userid = 'ZhangZhiMin';
 
             $staffDetailRes = $staffDetailRequest->execute();
             /****************员工详情end*****************/
 
-            /****************获客助手客户详情start*****************/
-            $caCustomerListParam   = new CustomerAcquisitionCustomerListParam();
-            $caCustomerListRequest = new CustomerAcquisitionCustomerListRequest();
-            $caCustomerListRequest->setConfig($viceConfig);
-            $caCustomerListRequest->setParam($caCustomerListParam);
-            $caCustomerListParam->link_id = 'cawcde0f5d477cdf06';
+            /****************客户详情start*****************/
+            $customerDetailParam   = new CustomerDetailParam();
+            $customerDetailRequest = new CustomerDetailRequest();
+            $customerDetailRequest->setParam($customerDetailParam);
+            $customerDetailRequest->setConfig($mainConfig);
+            $customerDetailParam->external_userid = 'wmr2IaCgAArNKrKZyEAVhQamUxURajgg';
 
-            $caCustomerListRes = $caCustomerListRequest->execute();
-            /****************获客助手客户详情end*****************/
-            /****************获客助手列表start*****************/
-            $caListRequest = new CustomerAcquisitionListRequest();
-            $caListRequest->setConfig($viceConfig);
+            $customerDetailRes = $customerDetailRequest->execute();
+            /****************员工详情end*****************/
 
-            $caListRes = $caListRequest->execute();
-            /****************获客助手列表end*****************/
         } catch (Exception $e) {
             dd($e->getMessage());
         }

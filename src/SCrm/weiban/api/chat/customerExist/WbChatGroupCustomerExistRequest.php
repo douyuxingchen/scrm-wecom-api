@@ -1,6 +1,6 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\customerExist;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\chat\customerExist;
 
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\WbBaseRequestAbstract;
 

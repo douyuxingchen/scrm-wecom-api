@@ -1,6 +1,6 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\list_byCustomer\param;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\chat\list_byCustomer\param;
 
 class WbChatGroupListByCustomerParam
 {
