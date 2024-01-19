@@ -1,6 +1,6 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\customerExist\param;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\chat\customerExist\param;
 
 class WbChatGroupCustomerExistParam
 {

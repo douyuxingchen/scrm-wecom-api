@@ -1,6 +1,6 @@
 <?php
 
-namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\list_byCustomer;
+namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\chat\list_byCustomer;
 
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\WbBaseRequestAbstract;
 
