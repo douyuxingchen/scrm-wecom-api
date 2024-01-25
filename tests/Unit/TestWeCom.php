@@ -48,9 +48,10 @@ class TestWeCom extends TestBase
             $customerDetailRequest = new CustomerDetailRequest();
             $customerDetailRequest->setParam($customerDetailParam);
             $customerDetailRequest->setConfig($mainConfig);
-            $customerDetailParam->external_userid = 'wmr2IaCgAArNKrKZyEAVhQamUxURajgg';
+            $customerDetailParam->external_userid = 'wmr2IaCgAAhInq0jBDiF-iOszblt0DZw';
 
             $customerDetailRes = $customerDetailRequest->execute();
+            dd($customerDetailRes);
             /****************员工详情end*****************/
 
         } catch (Exception $e) {
