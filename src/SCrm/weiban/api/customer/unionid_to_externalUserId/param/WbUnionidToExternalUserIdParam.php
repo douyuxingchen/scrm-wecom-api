@@ -4,17 +4,14 @@ namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\unionid_to_externa
 
 class WbUnionidToExternalUserIdParam
 {
-    /*
-     * 请求示例
-     {
-        "external_user_ids": [
-            "string"
-        ]
-     }
-     */
 
     /*
-     * 必传 | array[string] | 客户external_user_id列表
+     * 必传 | string | 微信授权unionid
      */
-    public $external_user_ids;
+    public $unionid;
+
+    /*
+     * 必传 | string | 微信授权openid
+     */
+    public $openid;
 }

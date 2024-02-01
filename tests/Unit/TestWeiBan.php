@@ -4,6 +4,10 @@ namespace Unit;
 
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\contact_way\listing\param\WbContactWayListParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\contact_way\listing\WbContactWayListRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\detail\param\WbCustomerDetailParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\detail\WbCustomerDetailRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\unionid_to_externalUserId\param\WbUnionidToExternalUserIdParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\unionid_to_externalUserId\WbUnionidToExternalUserIdRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\staff\detail\param\WbStaffDetailParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\staff\detail\WbStaffDetailRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\staff\listing\param\WbStaffListParam;
@@ -21,6 +25,24 @@ class TestWeiBan extends TestBase
             $corpId    = lib_env('WEI_BAN_CORP_ID');
             $mainToken = lib_env('WEI_BAN_SECRET');
             $mainConf  = new WbReqConfCustomize($corpId, $mainToken);
+
+            $euidToUnionidParam   = new WbUnionidToExternalUserIdParam();
+            $euidToUnionidRequest = new WbUnionidToExternalUserIdRequest();
+            $euidToUnionidRequest->setConfig($mainConf);
+            $euidToUnionidRequest->setParam($euidToUnionidParam);
+            $euidToUnionidParam->unionid = 'oS_645y7_7wLCGbYoHoQDaiAdxew';
+            $euidToUnionidParam->openid  = 'ocuzb6j536KAeejNT-FGJ23gnvqI1111';
+            $euidToUnionidRes            = $euidToUnionidRequest->execute();
+
+            /****************客户详情 start*****************/
+            $wbCustomerDetailParam   = new WbCustomerDetailParam();
+            $wbCustomerDetailRequest = new WbCustomerDetailRequest();
+            $wbCustomerDetailRequest->setParam($wbCustomerDetailParam);
+            $wbCustomerDetailRequest->setConfig($mainConf);
+            $wbCustomerDetailParam->id = 'wmgizUDQAAb7bAoA10kTp97YSxWVVHcw';
+
+            $wbCustomerDetailRes = $wbCustomerDetailRequest->execute();
+            /****************客户详情 end*****************/
 
             /****************微伴员工列表 start*****************/
             $wbStaffListParam   = new WbStaffListParam();
