@@ -50,4 +50,5 @@ class JoinChatWayUpdateParam
      * 如果有设置此参数，在调用获取客户群详情接口时会返回每个群成员对应的该参数值，详见文末；
      */
     public $state;
+
 }
