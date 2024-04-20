@@ -8,7 +8,7 @@ use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\JzClient;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\JzGlobalConfig;
 use Douyuxingchen\ScrmWecomApi\SCrm\juzi\core\config\JzReqConfMain;
 
-abstract class JzBaseRequestAbstract implements JzBaseRequestInterface
+abstract class JzBaseRequestAbstract #implements JzBaseRequestInterface
 {
     protected $param;
 
@@ -20,6 +20,10 @@ abstract class JzBaseRequestAbstract implements JzBaseRequestInterface
             $this->setConfig(new JzReqConfMain);
         }
     }
+
+    abstract function getMethod(): string;
+
+    abstract function getUrlPath(): string;
 
     public function setParam($param)
     {

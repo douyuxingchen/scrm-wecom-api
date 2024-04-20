@@ -2,7 +2,7 @@
 
 namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\core;
 
-use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\WbBaseRequestInterface;
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\WbBaseRequestAbstract;
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\token\param\WbCreateTokenParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\token\WbCreateTokenRequest;
 use Exception;
@@ -20,7 +20,7 @@ class WbAccessTokenBuilder
         $this->redisClient = RedisLabor::getInstance();
     }
 
-    public function generate(WbBaseRequestInterface $request): string
+    public function generate(WbBaseRequestAbstract $request): string
     {
         $config   = $request->getConfig();
         $cacheKey = $config->cache_key;

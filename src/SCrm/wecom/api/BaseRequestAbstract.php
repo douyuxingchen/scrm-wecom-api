@@ -8,7 +8,7 @@ use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\GlobalConfig;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\WeComClient;
 use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
 
-abstract class BaseRequestAbstract implements BaseRequestInterface
+abstract class BaseRequestAbstract #implements BaseRequestInterface
 {
     protected $param;
 
@@ -22,6 +22,10 @@ abstract class BaseRequestAbstract implements BaseRequestInterface
             $this->setConfig(new ReqConfMain);
         }
     }
+
+    abstract function getMethod(): string;
+
+    abstract function getUrlPath(): string;
 
     public function setParam($param)
     {

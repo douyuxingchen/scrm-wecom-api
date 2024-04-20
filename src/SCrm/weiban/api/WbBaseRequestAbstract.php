@@ -8,7 +8,7 @@ use Douyuxingchen\ScrmWecomApi\SCrm\weiban\core\WbGlobalConfig;
 use Douyuxingchen\ScrmWecomApi\Utils\FinalResp;
 use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
 
-abstract class WbBaseRequestAbstract implements WbBaseRequestInterface
+abstract class WbBaseRequestAbstract #implements WbBaseRequestInterface
 {
     protected $param;
 

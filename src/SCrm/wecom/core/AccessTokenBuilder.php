@@ -3,8 +3,8 @@
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core;
 
 use Exception;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestAbstract;
 use Douyuxingchen\ScrmWecomApi\Redis\RedisLabor;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestInterface;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\token\CreateTokenRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\token\param\CreateTokenParam;
 
@@ -20,7 +20,7 @@ class AccessTokenBuilder
         $this->redisClient = RedisLabor::getInstance();
     }
 
-    public function generate(BaseRequestInterface $request): string
+    public function generate(BaseRequestAbstract $request): string
     {
         $config   = $request->getConfig();
         $cacheKey = $config->cache_key;

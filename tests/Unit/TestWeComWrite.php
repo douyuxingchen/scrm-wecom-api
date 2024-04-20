@@ -2,6 +2,8 @@
 
 namespace Unit;
 
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\create\CustomerAcquisitionCreateRequest;
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\customer_acquisition\create\param\CustomerAcquisitionCreateParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\msg_push\send_welcomeMsg\param\SendWelcomeMsgParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\customer_contact\msg_push\send_welcomeMsg\SendWelcomeMsgRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\wecom\core\config\ReqConfAbstract;
@@ -19,7 +21,7 @@ class TestWeComWrite extends TestBase
             $viceConfig    = $this->getViceConf();
             $backendConfig = $this->getBackendConf();
 
-            /****************群详情start*****************/
+            /****************发送欢迎语 start*****************/
             $sendWelcomeMsgParam   = new SendWelcomeMsgParam();
             $sendWelcomeMsgRequest = new SendWelcomeMsgRequest();
             $sendWelcomeMsgRequest->setParam($sendWelcomeMsgParam);
@@ -39,11 +41,22 @@ class TestWeComWrite extends TestBase
                     ],
                 ],
             ];
+            //$sendRes = $sendWelcomeMsgRequest->execute();
+            //dd($sendRes);
+            /****************发送欢迎语 end*****************/
 
-            $sendRes = $sendWelcomeMsgRequest->execute();
-
-            dd($sendRes);
-            /****************群详情end*****************/
+            /****************生成获客链接 start*****************/
+            $caCreateParam   = new CustomerAcquisitionCreateParam();
+            $caCreateRequest = new CustomerAcquisitionCreateRequest();
+            $caCreateRequest->setParam($caCreateParam);
+            $caCreateRequest->setConfig($viceConfig);
+            $caCreateParam->link_name = '希沃投流-L系列-冯海宁';
+            $caCreateParam->range         = [
+                'user_list' => ['FengHaiNing'],
+            ];
+            //$caCreatedRes = $caCreateRequest->execute();
+            //dd($caCreatedRes);
+            /****************生成获客链接 end*****************/
         } catch (Exception $e) {
             dd($e->getMessage());
         }
