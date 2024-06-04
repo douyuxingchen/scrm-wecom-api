@@ -1,9 +1,7 @@
 # 文档目录
 
-- [环境变量配置](环境变量.md)
-- [统一响应](../src/Response)
-- [HTTP请求](../src/Quest)
-- [短信发送](../src/Sms)
-- [短信参数生成](../src/Sms/Params)
-- [飞鸽短信（已废弃）](../src/FeigeSms)
-- [外呼系统](../src/Call)
+- [统一响应](../src/Utils/FinalResp.php)
+- [HTTP请求](../src/Http)
+- [企业微信API](../src/SCrm/wecom)
+- [秒回句子API](../src/SCrm/juzi)
+- [微伴助手API](../src/SCrm/weiban)
