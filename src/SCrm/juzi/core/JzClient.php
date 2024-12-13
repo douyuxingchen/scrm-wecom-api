@@ -3,12 +3,12 @@
 namespace Douyuxingchen\ScrmWecomApi\SCrm\juzi\core;
 
 
+use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\JzBaseRequestAbstract;
 use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
 use Douyuxingchen\ScrmWecomApi\Http\HttpClient;
 use Douyuxingchen\ScrmWecomApi\Utils\FinalResp;
 use Douyuxingchen\ScrmWecomApi\Http\HttpRequest;
 use Douyuxingchen\ScrmWecomApi\Http\HttpResponse;
-use Douyuxingchen\ScrmWecomApi\SCrm\juzi\api\JzBaseRequestInterface;
 
 class JzClient
 {
@@ -19,7 +19,7 @@ class JzClient
         $this->httpRequest = new HttpRequest();
     }
 
-    public function request(JzBaseRequestInterface $request): FinalResp
+    public function request(JzBaseRequestAbstract $request): FinalResp
     {
         $params = $request->getParam();
         $method = $request->getMethod();
@@ -59,9 +59,9 @@ class JzClient
 
     /**
      * @desc 处理请求地址
-     * @param JzBaseRequestInterface $request
+     * @param JzBaseRequestAbstract $request
      */
-    private function handleRequestConf(JzBaseRequestInterface $request)
+    private function handleRequestConf(JzBaseRequestAbstract $request)
     {
         $config     = $request->getConfig();
         $urlPath    = $request->getUrlPath();

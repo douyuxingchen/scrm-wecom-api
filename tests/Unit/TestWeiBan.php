@@ -2,6 +2,8 @@
 
 namespace Unit;
 
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\chat\list_byCustomer\param\WbChatGroupListByCustomerParam;
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\chat\list_byCustomer\WbChatGroupListByCustomerRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\contact_way\listing\param\WbContactWayListParam;
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\contact_way\listing\WbContactWayListRequest;
 use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\customer\detail\param\WbCustomerDetailParam;
@@ -25,6 +27,14 @@ class TestWeiBan extends TestBase
             $corpId    = lib_env('WEI_BAN_CORP_ID');
             $mainToken = lib_env('WEI_BAN_SECRET');
             $mainConf  = new WbReqConfCustomize($corpId, $mainToken);
+
+            $customerChatListParams   = new WbChatGroupListByCustomerParam();
+            $customerChatListRequest = new WbChatGroupListByCustomerRequest();
+            $customerChatListRequest->setConfig($mainConf);
+            $customerChatListRequest->setParam($customerChatListParams);
+            $customerChatListParams->unionid = 'oS_645_SRnxU4aeME3eaAXFo2qsI';
+            $customerChatListParams->openid = 'oaqKd6TnvHd7cJuOuKA9TIteAqVQ';
+            $customerChatListRes            = $customerChatListRequest->execute();
 
             $euidToUnionidParam   = new WbUnionidToExternalUserIdParam();
             $euidToUnionidRequest = new WbUnionidToExternalUserIdRequest();

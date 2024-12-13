@@ -3,12 +3,12 @@
 namespace Douyuxingchen\ScrmWecomApi\SCrm\weiban\core;
 
 
+use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\WbBaseRequestAbstract;
 use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
 use Douyuxingchen\ScrmWecomApi\Http\HttpClient;
 use Douyuxingchen\ScrmWecomApi\Utils\FinalResp;
 use Douyuxingchen\ScrmWecomApi\Http\HttpRequest;
 use Douyuxingchen\ScrmWecomApi\Http\HttpResponse;
-use Douyuxingchen\ScrmWecomApi\SCrm\weiban\api\WbBaseRequestInterface;
 
 class WbClient
 {
@@ -19,7 +19,7 @@ class WbClient
         $this->httpRequest = new HttpRequest();
     }
 
-    public function request(WbBaseRequestInterface $request): FinalResp
+    public function request(WbBaseRequestAbstract $request): FinalResp
     {
         $params = $request->getParam();
         $method = $request->getMethod();
@@ -53,9 +53,9 @@ class WbClient
 
     /**
      * @desc 处理请求地址
-     * @param WbBaseRequestInterface $request
+     * @param WbBaseRequestAbstract $request
      */
-    private function handleRequestConf(WbBaseRequestInterface $request)
+    private function handleRequestConf(WbBaseRequestAbstract $request)
     {
         $config     = $request->getConfig();
         $urlPath    = $request->getUrlPath();

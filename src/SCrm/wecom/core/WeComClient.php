@@ -3,12 +3,12 @@
 namespace Douyuxingchen\ScrmWecomApi\SCrm\wecom\core;
 
 
+use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestAbstract;
 use Douyuxingchen\ScrmWecomApi\Utils\SignUtil;
 use Douyuxingchen\ScrmWecomApi\Http\HttpClient;
 use Douyuxingchen\ScrmWecomApi\Utils\FinalResp;
 use Douyuxingchen\ScrmWecomApi\Http\HttpRequest;
 use Douyuxingchen\ScrmWecomApi\Http\HttpResponse;
-use Douyuxingchen\ScrmWecomApi\SCrm\wecom\api\BaseRequestInterface;
 
 class WeComClient
 {
@@ -19,7 +19,7 @@ class WeComClient
         $this->httpRequest = new HttpRequest();
     }
 
-    public function request(BaseRequestInterface $request): FinalResp
+    public function request(BaseRequestAbstract $request): FinalResp
     {
         $params = $request->getParam();
         $method = $request->getMethod();
@@ -53,9 +53,9 @@ class WeComClient
 
     /**
      * @desc 处理请求地址
-     * @param BaseRequestInterface $request
+     * @param BaseRequestAbstract $request
      */
-    private function handleRequestConf(BaseRequestInterface $request)
+    private function handleRequestConf(BaseRequestAbstract $request)
     {
         $config     = $request->getConfig();
         $urlPath    = $request->getUrlPath();
